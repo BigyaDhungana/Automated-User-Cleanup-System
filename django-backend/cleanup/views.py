@@ -32,3 +32,12 @@ def manual_clean_up(request):
     except Exception as e:
         print(e)
         return Response({"status":"error","message":"Failed to clean up task"},status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@api_view(['GET'])
+def get_all_reports(request):
+    try:
+        reports=CleanupReport.objects.all()
+        serilaized_reports=CleanupReportSerializer(reports,many=True)
+        return Response({"status":"success","data":serilaized_reports.data},status=status.HTTP_200_OK)
+    except Exception as e:
+        return Response({"status":"error","message":"Failed to get data"},status=status.HTTP_500_INTERNAL_SERVER_ERROR)
