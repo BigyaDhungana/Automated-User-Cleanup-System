@@ -7,13 +7,13 @@ from .models import User, CleanupReport
 from django.db import transaction
 
 
+
 env=environ.Env()
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 @shared_task(bind=True)
 def cleanup_inactive_users(self,manual:bool):
-    print(timezone.now())
     max_retries=2
     try:
         inactivity_threshold_minutes=env.float('INACTIVITY_THRESHOLD_MINUTES',default=30*24*60) #default is 30 days
