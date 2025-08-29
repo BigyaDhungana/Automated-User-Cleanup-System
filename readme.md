@@ -12,7 +12,7 @@ It also includes a frontend built with **Vite** for demonstration purposes.
 Automated-User-Cleanup-System/
 ├── django-backend/          # Django project folder
 │   ├── project/             # Django project (settings, celery.py, urls)
-│   ├── app/                 # Main Django app (endpoints, tasks)
+│   ├── cleanup/                 # Main Django app (endpoints, tasks)
 │   ├── manage.py
 │   └── requirements.txt
 ├── Dockerfile               # Dockerfile for backend, worker, scheduler
